@@ -63,5 +63,9 @@ public enum Tokens {
     Define,
     Menor,
     Mayor,
-    Bool
+    Bool,
+    Dos_puntos,
+    Comilla_simple,
+    Op_cout,
+    Op_cin
 }

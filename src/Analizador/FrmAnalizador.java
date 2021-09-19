@@ -73,7 +73,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
         Resultado.setColumns(20);
         Resultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Resultado.setRows(5);
-        Resultado.setText("#include \"stdio.h\"\nint main(){\nint a;\nif(a==4){\nint b;\n}\n}\n");
+        Resultado.setText("#include \"stdio.h\"\nint main(){\nint a;\nif(a==4){\nint b;\n}\ncout<<a<<\"alo\";\nreturn 0;\n}\n");
         jScrollPane1.setViewportView(Resultado);
 
         BotonSintactico.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -405,6 +405,18 @@ public class FrmAnalizador extends javax.swing.JFrame {
                     break;
                 case Bool:
                     resultado += "  <Reservada bool>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Dos_puntos:
+                    resultado += "  <Dos puntos>\t\t" + lexicos.lexemas + "\n";
+                    break;
+                case Comilla_simple:
+                    resultado += "  <Comilla_simple>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_cout:
+                    resultado += "  <Operador cout>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_cin:
+                    resultado += "  <Operador cin>\t" + lexicos.lexemas + "\n";
                     break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";

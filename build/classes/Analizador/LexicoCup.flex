@@ -28,6 +28,9 @@ espacio=[ \t \r \n]+
 /* Comillas */
 ( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
+/* Comilla_simple */
+( "\'" ) {return new Symbol(sym.Comilla_simple, yychar, yyline, yytext());}
+
 /* Tipo de dato Int */
 ( int ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
 
@@ -139,6 +142,12 @@ espacio=[ \t \r \n]+
 /* Operador Division */
 ( "/" ) {return new Symbol(sym.Division, yychar, yyline, yytext());}
 
+/* Operador cout */
+( "<<" ) {return new Symbol(sym.Op_cout, yychar, yyline, yytext());}
+
+/* Operador cin */
+( ">>" ) {return new Symbol(sym.Op_cin, yychar, yyline, yytext());}
+
 /* Menor */
 ( "<" ) {return new Symbol(sym.Menor, yychar, yyline, yytext());}
 
@@ -149,7 +158,7 @@ espacio=[ \t \r \n]+
 ( "&&" | "||" | "!" | "&" | "|" ) {return new Symbol(sym.Op_logico, yychar, yyline, yytext());}
 
 /*Operadores Relacionales */
-( ">" | "<" | "==" | "!=" | ">=" | "<=" | "<<" | ">>" ) {return new Symbol(sym.Op_relacional, yychar, yyline, yytext());}
+( ">" | "<" | "==" | "!=" | ">=" | "<=" | ">>" | "<<" ) {return new Symbol(sym.Op_relacional, yychar, yyline, yytext());}
 
 /* Operadores Atribucion */
 ( "+=" | "-="  | "*=" | "/=" | "%=" | "=" ) {return new Symbol(sym.Op_atribucion, yychar, yyline, yytext());}
@@ -190,6 +199,9 @@ espacio=[ \t \r \n]+
 /* P_coma */
 ( ";" ) {return new Symbol(sym.P_coma, yychar, yyline, yytext());}
 
+/* Dos_puntos */
+( ":" ) {return new Symbol(sym.Dos_puntos, yychar, yyline, yytext());}
+
 /* Identificador */
 {L}({L}|{D})* {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
 
@@ -197,16 +209,16 @@ espacio=[ \t \r \n]+
 ("(-"{D}+")")|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}
 
 /*Funcion Printf*/
-( printf ) {return new Symbol(sym.Printf, yychar, yyline, yytext());}
+( "printf(" ) {return new Symbol(sym.Printf, yychar, yyline, yytext());}
 
 /*Funcion Scanf*/
-( scanf ) {return new Symbol(sym.Scanf, yychar, yyline, yytext());}
+( "scanf(" ) {return new Symbol(sym.Scanf, yychar, yyline, yytext());}
 
 /*Funcion Cin*/
-( Cin ) {return new Symbol(sym.Cin, yychar, yyline, yytext());}
+( "cin>>" ) {return new Symbol(sym.Cin, yychar, yyline, yytext());}
 
 /*Funcion Cout*/
-( Cout ) {return new Symbol(sym.Cout, yychar, yyline, yytext());}
+( "cout<<" ) {return new Symbol(sym.Cout, yychar, yyline, yytext());}
 
 /* Error de analisis */
  . {return new Symbol(sym.ERROR, yychar, yyline, yytext());}

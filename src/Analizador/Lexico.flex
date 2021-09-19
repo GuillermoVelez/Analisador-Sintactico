@@ -23,6 +23,9 @@ espacio=[ \t \r]+
 /* Comillas */
 ( "\"" ) {lexemas=yytext(); return Comillas;}
 
+/* Comilla_simple */
+( "\'" ) {lexemas=yytext(); return Comilla_simple;}
+
 /* Palabra reservada # */
 ( # ) {lexemas=yytext(); return Numeral;}
 
@@ -120,16 +123,16 @@ espacio=[ \t \r]+
 (typedef) {lexemas=yytext(); return Typedef;}
 
 /*Funcion printf*/
-(printf) {lexemas=yytext(); return Printf;}
+("printf(") {lexemas=yytext(); return Printf;}
 
 /*Funcion scanf*/
-(scanf) {lexemas=yytext(); return Scanf;}
+("scanf(") {lexemas=yytext(); return Scanf;}
 
 /*Funcion cin*/
-(cin) {lexemas=yytext(); return Cin;}
+("cin>>") {lexemas=yytext(); return Cin;}
 
 /*Funcion cout*/
-(cout) {lexemas=yytext(); return Cout;}
+("cout<<") {lexemas=yytext(); return Cout;}
 
 /* Operador Igual */
 ( "=" ) {lexemas=yytext(); return Igual;}
@@ -139,6 +142,12 @@ espacio=[ \t \r]+
 
 /* Operador Resta */
 ( "-" ) {lexemas=yytext(); return Resta;}
+
+/* Operador cout */
+( "<<" ) {lexemas = yytext(); return Op_cout;}
+
+/* Operador cin */
+( ">>" ) {lexemas = yytext(); return Op_cin;}
 
 /* Operador Menor */
 ( "<" ) {lexemas=yytext(); return Menor;}
@@ -153,7 +162,7 @@ espacio=[ \t \r]+
 ( true | false ) {lexemas=yytext(); return Op_booleano;}
 
 /*Operadores Relacionales */
-( ">" | "<" | "==" | "!=" | ">=" | "<=" | "<<" | ">>" ) {lexemas = yytext(); return Op_relacional;}
+( ">" | "<" | "==" | "!=" | ">=" | "<=" | ">>" | "<<" ) {lexemas = yytext(); return Op_relacional;}
 
 /* Operadores Atribucion */
 ( "+=" | "-="  | "*=" | "/=" | "%=" ) {lexemas = yytext(); return Op_atribucion;}
@@ -184,6 +193,9 @@ espacio=[ \t \r]+
 
 /* P_Coma */
 ( ";" ) {lexemas=yytext(); return P_Coma;}
+
+/* Dos_puntos */
+( ":" ) {lexemas=yytext(); return Dos_puntos;}
 
 /* Identificador */
 {L}({L}|{D})* {lexemas=yytext(); return Identificador;}
