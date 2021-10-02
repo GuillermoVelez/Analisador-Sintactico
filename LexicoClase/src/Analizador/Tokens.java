@@ -29,6 +29,7 @@ public enum Tokens {
     Linea,
     Comillas,
     T_dato,
+    Marca_printf,
     Cadena,
     While,
     Igual,

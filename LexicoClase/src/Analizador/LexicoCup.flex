@@ -61,6 +61,9 @@ espacio=[ \t \r \n]+
 /* Tipos de datos */
 ( byte | int | char | long | float | double | string | short | unsigned | bool) {return new Symbol(sym.T_dato, yychar, yyline, yytext());}
 
+/* Marcas printf*/
+( %d | %i | %f | %s) {return new Symbol(sym.Marca_printf, yychar, yyline, yytext());}
+
 /* Palabra reservada #*/
 ( # ) {return new Symbol(sym.Numeral, yychar, yyline, yytext());}
 

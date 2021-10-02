@@ -276,6 +276,9 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case T_dato:
                     resultado += "  <Tipo de dato>\t" + lexicos.lexemas + "\n";
                     break;
+                case Marca_printf:
+                    resultado += "  <Marca printf>\t\t" + lexicos.lexemas + "\n";
+                    break;
                 case If:
                     resultado += "  <Reservada if>\t" + lexicos.lexemas + "\n";
                     break;

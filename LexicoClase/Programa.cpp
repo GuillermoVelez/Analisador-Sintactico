@@ -1,14 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
-using namespace std;
+#include "stdio.h"
 int main(){
 int a=0;
-int b=0;
-printf("Al",b);
-if(a==1){
- b=5;
+if(a==4){
+int b;
 }
-printf("AMimir",b);
-system("pause");
-return b;
+return 0;
 }

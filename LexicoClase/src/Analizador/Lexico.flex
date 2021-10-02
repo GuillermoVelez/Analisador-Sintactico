@@ -65,6 +65,9 @@ espacio=[ \t \r]+
 /* Tipos de datos */
 ( byte | int | char | long | float | double | short | unsigned | string | bool ) {lexemas=yytext(); return T_dato;}
 
+/* Marcas printf */
+( %d | %i | %f | %s) {lexemas=yytext(); return Marca_printf;}
+
 /* Palabra reservada If */
 ( if ) {lexemas=yytext(); return If;}
 

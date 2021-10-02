@@ -15,7 +15,7 @@ parser code
 }
 :};
 
-terminal Linea, Comillas, T_dato, Cadena, If, Else, Do, While, For, Int, Double, Bool,
+terminal Linea, Comillas, T_dato,Marca_printf, Cadena, If, Else, Do, While, For, Int, Double, Bool,
     Float, Char, Const, Short, Unsigned, Break, Case, Long, Struct,
     Continue, Default, Enum, Extern, GoTo, Register, Return, Union, Switch,
     Typedef, Igual, Suma, Resta, Multiplicacion, Division, Op_logico, Op_relacional,
@@ -224,14 +224,11 @@ PRINTF ::= Printf PRINTF_LIST Parent_c P_coma
 ;
 PRINTF_LIST ::= PRINTF_LIST PRINTF_PARAM | PRINTF_PARAM
 ;
-PRINTF_PARAM ::= Identificador Coma | Comillas Identificador Comillas Coma | 
-               Identificador | Comillas Identificador Comillas
+PRINTF_PARAM ::= Identificador Coma | Comillas Identificador Marca_printf Comillas Coma | 
+               Identificador | Comillas Identificador Marca_printf Comillas
 ;
-SCANF ::= Scanf SCANF_LIST Parent_c P_coma
+SCANF ::= Scanf Comillas Marca_printf Comillas Coma Identificador Parent_c P_coma
 ;
-SCANF_LIST ::= SCANF_LIST PRINTF_PARAM | SCANF_PARAM
-;
-SCANF_PARAM ::= Identificador Coma |  Identificador 
 ;
 SYSTEM ::= System_r Parent_a Comillas Identificador Comillas Parent_c P_coma
 ;
