@@ -77,7 +77,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
         Resultado.setColumns(20);
         Resultado.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Resultado.setRows(5);
-        Resultado.setText("#include \"stdio.h\"\nint main(){\nint a;\nif(a==4){\nint b;\n}\ncout<<a<<\"alo\";\nreturn 0;\n}\n");
+        Resultado.setText("#include <stdlib.h>\n#include <stdio.h>\n#define PI 3.1416 \nusing namespace std;\nstruct Prueba{\n\tlong EnteroEstructura;\n\tchar CharEstructura;\n};\nint main(){\nint a=3;\nint b;\nchar d;\nbool c=true;\nprintf(\"Escriba_una_letra %c\",d);\nscanf(\" %c\",&d);\nif(c){\n \tprintf(\"Imprima %c\",d);\n}else{\n\tfor(int i=1;i<=5;i++){\n\t\tprintf(\"Imprimo %d\",i);\n\t}\n}\nswitch(a){\n\tcase 1:\n\t\tprintf(\"Imprimo %d\",a);\n\t\tbreak;\n\tcase 2:\n\t\tprintf(\"Imprimo_por_segunda_vez %d\",a);\n\t\tbreak;\n\tcase 3:\n\t\twhile(a!=0){\n\t\t\tprintf(\"Reducimos %d\",a);\n\t\t\ta--;\n\t\t}\n\t\tdo{\n\t\t\tprintf(\"Aumentamos %d\",a);\n\t\t\ta++;\n\t\t}while(a<4);\n\t\tbreak;\n\tdefault:\n\t\tprintf(\"Imprimo %d\",a);\n\t\tbreak;\n}\t\nPrueba objeto;\nobjeto.CharEstructura='z';\nobjeto.EnteroEstructura=4556;\nprintf(\"CharEstructura %c\",objeto.CharEstructura);\nprintf(\"EnteroEstructura %d \",objeto.EnteroEstructura);\nprintf(\"El_valor_de_PI_es %f \",PI);\nsystem(\"pause\");\nreturn b;\n}");
         jScrollPane1.setViewportView(Resultado);
 
         BotonSintactico.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -474,9 +474,13 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case Op_cin:
                     resultado += "  <Operador cin>\t" + lexicos.lexemas + "\n";
                     break;
+                case Apuntador:
+                    resultado += "  <Apuntador>\t\t"  + lexicos.lexemas + "\n";
+                    break;
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";
                     break;
+
 
                 default:
                     resultado += "  < " + lexicos.lexemas + " >\n";

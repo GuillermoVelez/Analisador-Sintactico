@@ -20,12 +20,12 @@ terminal Linea, Comillas, T_dato,Marca_printf, Cadena, If, Else, Do, While, For,
     Continue, Default, Enum, Extern, GoTo, Register, Return, Union, Switch,
     Typedef, Igual, Suma, Resta, Multiplicacion, Division, Op_logico, Op_relacional,
     Op_atribucion, Op_incremento, Op_booleano, Parent_a, Parent_c,
-    Llave_a, Llave_c, Corchete_a, Corchete_c, Main, P_coma, Punto, Coma, Identificador, Comilla_simple,
+    Llave_a, Llave_c, Corchete_a, Corchete_c, Main, P_coma, Punto, Coma, Identificador, Comilla_simple,Apuntador,
     Printf, Scanf, Cin, Cout, Numero, ERROR, Numeral, Define, Include, Menor, Mayor, Dos_puntos ,Op_cout, Op_cin, Using, Namespace, System_r;
 non terminal INICIO, SENTENCIA, DECLARACION, DECLARACION_FOR, INCLUDE, DEFINE, IF, IF_ELSE, CASE,
     DEFAULT, DO, ENUM, GOTO, UNION, STRUCT, SWITCH, PRINTF, SCANF, CIN, COUT , COUT_LIST , CIN_LIST, CIN_PARAM,
     WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR, TYPEDEF, SENTENCIA_LIST_CASE, SENTENCIA_CASE, CONST, DECLARACION_LIST,
-    CABECERA, COUT_PARAM , PRINTF_LIST, PRINTF_PARAM , SCANF_LIST, SCANF_PARAM, USING_NAMESPACE, SYSTEM;
+    CABECERA, COUT_PARAM , PRINTF_LIST, PRINTF_PARAM , USING_NAMESPACE, SYSTEM;
 
 start with INICIO;
 
@@ -103,6 +103,7 @@ DECLARACION ::=
     Short Identificador P_coma |
     T_dato Identificador P_coma | 
     T_dato Identificador Op_atribucion Numero P_coma |
+    Identificador Op_incremento P_coma |
     Int Identificador Igual Numero P_coma |
     Char Identificador Igual Comilla_simple Identificador Comilla_simple P_coma |
     Double Identificador Igual Numero P_coma |
@@ -225,10 +226,10 @@ PRINTF ::= Printf PRINTF_LIST Parent_c P_coma
 PRINTF_LIST ::= PRINTF_LIST PRINTF_PARAM | PRINTF_PARAM
 ;
 PRINTF_PARAM ::= Identificador Coma | Comillas Identificador Marca_printf Comillas Coma | 
-               Identificador | Comillas Identificador Marca_printf Comillas
+                 Identificador | Comillas Identificador Marca_printf Comillas |
+                 Identificador Punto Identificador 
 ;
-SCANF ::= Scanf Comillas Marca_printf Comillas Coma Identificador Parent_c P_coma
-;
+SCANF ::= Scanf Comillas Marca_printf Comillas Coma Apuntador Parent_c P_coma
 ;
 SYSTEM ::= System_r Parent_a Comillas Identificador Comillas Parent_c P_coma
 ;

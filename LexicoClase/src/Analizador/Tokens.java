@@ -71,5 +71,6 @@ public enum Tokens {
     Op_cin,
     Using,
     Namespace,
-    System_r
+    System_r,
+    Apuntador
 }

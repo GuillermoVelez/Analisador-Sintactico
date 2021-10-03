@@ -66,7 +66,7 @@ espacio=[ \t \r]+
 ( byte | int | char | long | float | double | short | unsigned | string | bool ) {lexemas=yytext(); return T_dato;}
 
 /* Marcas printf */
-( %d | %i | %f | %s) {lexemas=yytext(); return Marca_printf;}
+( %d | %i | %f | %s | %c ) {lexemas=yytext(); return Marca_printf;}
 
 /* Palabra reservada If */
 ( if ) {lexemas=yytext(); return If;}
@@ -215,6 +215,8 @@ espacio=[ \t \r]+
 /* Identificador */
 {L}({L}|{D})* {lexemas=yytext(); return Identificador;}
 
+/* Apuntador */
+("&")({L}|{D})* {lexemas=yytext(); return Apuntador;}
 
 /* Numero */
 ("(-"{D}+")")|{D}+ {lexemas=yytext(); return Numero;}

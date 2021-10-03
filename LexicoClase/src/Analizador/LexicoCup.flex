@@ -62,7 +62,7 @@ espacio=[ \t \r \n]+
 ( byte | int | char | long | float | double | string | short | unsigned | bool) {return new Symbol(sym.T_dato, yychar, yyline, yytext());}
 
 /* Marcas printf*/
-( %d | %i | %f | %s) {return new Symbol(sym.Marca_printf, yychar, yyline, yytext());}
+( %d | %i | %f | %s | %c ) {return new Symbol(sym.Marca_printf, yychar, yyline, yytext());}
 
 /* Palabra reservada #*/
 ( # ) {return new Symbol(sym.Numeral, yychar, yyline, yytext());}
@@ -216,6 +216,9 @@ espacio=[ \t \r \n]+
 
 /* Identificador */
 {L}({L}|{D})* {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
+
+/* Apuntador */
+("&")({L}|{D})* {return new Symbol(sym.Apuntador, yychar, yyline, yytext());}
 
 /* Numero */
 ("(-"{D}+")")|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}
